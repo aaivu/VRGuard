@@ -7,8 +7,9 @@ from scipy.signal import welch
 
 class PQRST:
     @staticmethod
-    def extract_r_peaks(ecg_signal,fs):
+    def extract__Rpeaks(ecg_signal,fs):
         signals=ecg_signal.values
+        print(len(signals))
         signals = list(filter(lambda value: not np.isnan(value), signals))
         _, results = nk.ecg_peaks(signals, sampling_rate=fs)
         rpeaks = list(filter(lambda value: not np.isnan(value), results["ECG_R_Peaks"]))
@@ -25,7 +26,7 @@ class PQRST:
     def extract_Q_peaks(ecg_signal,rpeaks,fs):
         qpeaks=list(filter(lambda value: not np.isnan(value), waves_peak['ECG_Q_Peaks']))
         return qpeaks
-        
+
     @staticmethod
     def extract_S_peaks(ecg_signal,rpeaks,fs):
         speaks=list(filter(lambda value: not np.isnan(value), waves_peak['ECG_S_Peaks']))

@@ -5,6 +5,7 @@ import numpy as np
 import EntropyHub as EH
 from features.entropy import Entropy
 from features.psd import PSD
+from features.pqrst import PQRST
 from utils.utils import Utils
 
 class FeatureExtractor_1D:
@@ -34,9 +35,9 @@ class FeatureExtractor_1D:
 
         features["PSD_std"]= features["PSD"].apply(lambda row:Utils.compute_std(row))
 
-        # abc=signals.apply(lambda row: Features.extract_pqrst(row,fs=200),axis=1)
+        abc["RPeaks"]=signals.apply(lambda row: PQRST.extract_r_peaks(row,fs=200))
 
-        # print(abc.head())
+        print(abc.head())
 
 
         print(features.head())
