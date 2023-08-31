@@ -3,7 +3,7 @@ from scipy.signal import welch
 import neurokit2 as nk
 import numpy as np
 import EntropyHub as EH
-from features.features import Features
+from features.entropy import Entropy
 from features.psd import PSD
 from utils.utils import Utils
 
@@ -13,7 +13,7 @@ class FeatureExtractor_1D:
         self.batch_size = batch_size
 
     def calculate_fuzzy_entropy_batch(self, batch):
-        result = batch.apply(lambda row: Features.calculate_fuzzy_entropy(row), axis=1)
+        result = batch.apply(lambda row: Entropy.fuzzy_entropy(row), axis=1)
         return result.values 
 
 

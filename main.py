@@ -1,5 +1,4 @@
 # Usage
-from features.features import Features
 from feature_extractor.extract_1d_signal import FeatureExtractor_1D
 import pandas as pd
 
