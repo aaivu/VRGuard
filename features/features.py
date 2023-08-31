@@ -20,16 +20,10 @@ class Features:
 
         valid_psd = psd[valid_indices]
         return valid_psd
-    @staticmethod
-    def compute_mean(psd):
-        return np.mean(psd)
+
 
     @staticmethod
-    def compute_std(psd):
-        return np.std(psd)
-
-    @staticmethod
-    def extract_pqrst(ecg_signal):
+    def extract_pqrst(ecg_signal,fs,rpeaks=True, ppeaks=True):
         signals=ecg_signal.values
         signals = list(filter(lambda value: not np.isnan(value), signals))
         _, results = nk.ecg_peaks(signals, sampling_rate=fs)

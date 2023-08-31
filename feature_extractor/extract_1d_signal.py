@@ -4,7 +4,8 @@ import neurokit2 as nk
 import numpy as np
 import EntropyHub as EH
 from features.features import Features
-
+from features.psd import PSD
+from utils.utils import Utils
 
 class FeatureExtractor_1D:
     def __init__(self, fs=100, batch_size=1):
@@ -27,10 +28,17 @@ class FeatureExtractor_1D:
 
         features=pd.DataFrame(fuzzy_entropy_values)
         features.columns=["fuzz_en{}".format(i) for i in range(1,len(fuzzy_entropy_values[0])+1)]
-        features["PSD"]=signals.apply(lambda row:Features.compute_psd(row,self.fs),axis=1)
+        features["PSD"]=signals.apply(lambda row:PSD.compute_psd(row,self.fs),axis=1)
      
-        features["mean"]= features["PSD"].apply(lambda row:Features.compute_mean(row))
-        features["std"]= features["PSD"].apply(lambda row:Features.compute_std(row))
+        features["PSD_mean"]= features["PSD"].apply(lambda row:Utils.compute_mean(row))
+
+        features["PSD_std"]= features["PSD"].apply(lambda row:Utils.compute_std(row))
+
+        # abc=signals.apply(lambda row: Features.extract_pqrst(row,fs=200),axis=1)
+
+        # print(abc.head())
+
+
         print(features.head())
 
         return features
