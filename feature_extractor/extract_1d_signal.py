@@ -29,16 +29,21 @@ class FeatureExtractor_1D:
 
         features=pd.DataFrame(fuzzy_entropy_values)
         features.columns=["fuzz_en{}".format(i) for i in range(1,len(fuzzy_entropy_values[0])+1)]
-        features["PSD"]=signals.apply(lambda row:PSD.compute_psd(row,self.fs),axis=1)
-     
-        features["PSD_mean"]= features["PSD"].apply(lambda row:Utils.compute_mean(row))
 
+        #Calculating PSD and mean
+        df_=pd.DataFrame(signals.apply(lambda row:PSD.compute_psd(row,self.fs),axis=1).values)
+        df_.columns=["PSD"]
+        features=pd.concat([features,df_],axis=1)
+        features["PSD_mean"]= features["PSD"].apply(lambda row:Utils.compute_mean(row))
         features["PSD_std"]= features["PSD"].apply(lambda row:Utils.compute_std(row))
 
-        abc["RPeaks"]=signals.apply(lambda row: PQRST.extract_r_peaks(row,fs=200))
 
-        print(abc.head())
-
+        #Calculating RR Peaks
+        dd=pd.DataFrame()
+        dd=pd.DataFrame(signals.apply(lambda row: PQRST.extract_R_peaks(row,fs=200),axis=1).values).apply(pd.Series)  
+        df_split = dd[0].apply(lambda x: pd.Series(x))
+        df_split.columns=["P_peaks","Q_peaks","S_peaks","T_peaks","R_peaks"]
+        features = pd.concat([features, df_split], axis=1)
 
         print(features.head())
 
