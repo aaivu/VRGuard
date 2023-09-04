@@ -45,7 +45,7 @@ Follow these steps to set up and use VRGuard:
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/VRGuard.git
+   git clone https://github.com/SVithurabiman/VRGuard.git
 2. Install the dependencies
     ```sh
     pip install -r requirements.txt
