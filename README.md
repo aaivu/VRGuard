@@ -1,6 +1,6 @@
 # VRGuard - Protecting Biometric Signal Privacy in AR/VR
 
-![AR/VR Privacy](https://your-image-url.com/your-image.png)
+![AR/VR Privacy](Images\logo.png)
 
 VRGuard is an open-source project dedicated to enhancing privacy and security for biometric signals collected within Augmented Reality (AR) and Virtual Reality (VR) environments. As AR and VR technologies advance, the need to safeguard sensitive biometric data becomes increasingly critical.
 
