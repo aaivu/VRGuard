@@ -1,0 +1,6 @@
+EntropyHub==0.2
+EntropyHub==0.2
+neurokit2==0.2.5
+numpy==1.19.5
+pandas==1.3.0
+scipy==1.7.0
