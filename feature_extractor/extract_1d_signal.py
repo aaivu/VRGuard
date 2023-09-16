@@ -40,10 +40,17 @@ class FeatureExtractor_1D:
 
         #Calculating RR Peaks
         dd=pd.DataFrame()
-        dd=pd.DataFrame(signals.apply(lambda row: PQRST.extract_R_peaks(row,fs=200),axis=1).values).apply(pd.Series)  
+        dd=pd.DataFrame(signals.apply(lambda row: PQRST.extract_peaks(row,fs=self.fs),axis=1).values).apply(pd.Series)  
         df_split = dd[0].apply(lambda x: pd.Series(x))
         df_split.columns=["P_peaks","Q_peaks","S_peaks","T_peaks","R_peaks"]
         features = pd.concat([features, df_split], axis=1)
+
+        #Calculating R statisitics
+        features["R_mean"]=features["R_peaks"].apply(lambda row:PQRST.rr_mean(row,fs=self.fs))
+        features["R_std"]=features["R_peaks"].apply(lambda row:PQRST.rr_std(row,fs=self.fs))
+
+        features["PR_mean"]=features[["P_peaks","R_peaks"]].apply((lambda row:PQRST.pr_mean(row[0],row[1],fs=500)),axis=1)
+        features["PR_std"]=features[["P_peaks","R_peaks"]].apply((lambda row:PQRST.pr_std(row[0],row[1],fs=500)),axis=1)
 
         print(features.head())
 
