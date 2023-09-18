@@ -8,7 +8,7 @@ VRGuard is an open-source project dedicated to enhancing privacy and security fo
 - <b>Project Lead(s) / Mentor(s)</b>
 
     1. DR. UTHAYASANKER THAYASIVAM
-    2. Name (talk forum profile link)
+    2. DR. IYNKARAN NATGUNANATHAN
     
 - <b>Contributor(s)</b>
     1. Vithurabiman Senthuran
