@@ -39,7 +39,6 @@ class PQRST:
         elif len(rpeaks)<len(ppeaks):
             ppeaks=ppeaks[0:len(rpeaks)]
         interval = np.array(rpeaks) - np.array(ppeaks)
-        print(interval)
         interval=interval/fs
         return interval
 

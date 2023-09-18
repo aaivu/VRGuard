@@ -48,11 +48,12 @@ class FeatureExtractor_1D:
         #Calculating R statisitics
         features["R_mean"]=features["R_peaks"].apply(lambda row:PQRST.rr_mean(row,fs=self.fs))
         features["R_std"]=features["R_peaks"].apply(lambda row:PQRST.rr_std(row,fs=self.fs))
-
         features["PR_mean"]=features[["P_peaks","R_peaks"]].apply((lambda row:PQRST.pr_mean(row[0],row[1],fs=500)),axis=1)
         features["PR_std"]=features[["P_peaks","R_peaks"]].apply((lambda row:PQRST.pr_std(row[0],row[1],fs=500)),axis=1)
 
-        print(features.head())
+
+
+        #print(features.head())
 
         return features
 
