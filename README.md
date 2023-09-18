@@ -25,6 +25,9 @@ Biometric signals, such as heart rate and EEG, are often collected during AR/VR 
 
 By using VRGuard, developers, researchers, and AR/VR content creators can ensure that biometric data is handled securely and in compliance with privacy regulations.
 
+## Architecture
+
+![Architecture](Images/architecture.png)
 ## Features
 
 The `Features` directory contains Python scripts for extracting relevant features from biometric signals within the context of AR/VR applications. These features include:
