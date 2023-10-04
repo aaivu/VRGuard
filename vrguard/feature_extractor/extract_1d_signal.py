@@ -52,9 +52,6 @@ class FeatureExtractor_1D:
         features["PR_std"]=features[["P_peaks","R_peaks"]].apply((lambda row:PQRST.pr_std(row[0],row[1],fs=500)),axis=1)
 
 
-
-        #print(features.head())
-
         return features
 
 

@@ -1,7 +1,7 @@
 # Usage
 from feature_extractor.extract_1d_signal import FeatureExtractor_1D
 import pandas as pd
-from models.rf_classifier import rf_classifier
+from classifiers.rf_classifier import rf_classifier
 import numpy as np
 if __name__ == "__main__":
     signals = pd.read_csv("C:\\Users\\USER\\Desktop\\Privacy_Re\\SAMPLES\\abalation_external\\raw_data\\ecg.csv", index_col=0)

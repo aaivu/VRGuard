@@ -9,7 +9,6 @@ class PSD:
 
     @staticmethod
     def compute_psd(signal,fs, lower_freq=0, upper_freq=40):
-        #print(signal)
         frequencies, psd = welch(signal.values, fs=fs)
         
         valid_indices = (frequencies >= lower_freq) & (frequencies <= upper_freq)

@@ -9,7 +9,7 @@ class rf_classifier:
         self.random_state = random_state
         self. rf_classifier = RandomForestClassifier(random_state=self.random_state ,n_estimators=n_estimators)
 
-    def train_model(self,X,y,test_size=0.2, time=False):
+    def train_model(self,X,y,test_size=0.2, calc_time=False):
 
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=self.random_state )
         
@@ -23,7 +23,7 @@ class rf_classifier:
 
         test_accuracy=accuracy_score(y_test,y_pred)
         
-        if time:
+        if calc_time:
             return test_accuracy,training_time,testing_time
         else:
             return test_accuracy
