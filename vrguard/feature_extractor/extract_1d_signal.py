@@ -14,11 +14,27 @@ class FeatureExtractor_1D:
         self.batch_size = batch_size
 
     def calculate_fuzzy_entropy_batch(self, batch):
+        """
+        Calculate the fuzzy entropy of a batch of signals
+        :param batch: DataFrame
+            Batch of signals
+        :return: result : Array
+            Fuzzy entropy of the batch
+        """
         result = batch.apply(lambda row: Entropy.fuzzy_entropy(row), axis=1)
         return result.values 
 
 
     def extract_features(self, signals,prnt=False):
+        """
+
+        :param signals: DataFrame
+            Input signals
+        :param prnt: Boolean
+            Print progress
+        :return: features: DataFrame
+            Features extracted from the signals
+        """
         fuzzy_entropy_values = []
         for i in range(0,signals.shape[0], self.batch_size):
             batch = signals.iloc[i:i + self.batch_size,:]

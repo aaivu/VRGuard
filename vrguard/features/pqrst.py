@@ -116,7 +116,7 @@ class PQRST:
         :param fs:  int
             Sampling frequency
         :return:    pr_std: Float
-            Standard deviation of the PR intervals of the ECG signal 
+            Standard deviation of the PR intervals of the ECG signal
         """
         interval=PQRST.pr_interval(ppeaks,rpeaks,fs)
         return np.std(interval)
