@@ -3,10 +3,10 @@ from scipy.signal import welch
 import neurokit2 as nk
 import numpy as np
 import EntropyHub as EH
-from features.entropy import Entropy
-from features.psd import PSD
-from features.pqrst import PQRST
-from utils.utils import Utils
+from vrguard.features.entropy import Entropy
+from vrguard.features.psd import PSD
+from vrguard.features.pqrst import PQRST
+from vrguard.utils.utils import Utils
 
 class FeatureExtractor_1D:
     def __init__(self, fs=100, batch_size=1):
@@ -31,7 +31,7 @@ class FeatureExtractor_1D:
         features.columns=["fuzz_en{}".format(i) for i in range(1,len(fuzzy_entropy_values[0])+1)]
 
         #Calculating PSD and mean
-        df_=pd.DataFrame(signals.apply(lambda row:PSD.compute_psd(row,self.fs),axis=1).values)
+        df_=pd.DataFrame(signals.apply(lambda row: compute_psd(row, self.fs), axis=1).values)
         df_.columns=["PSD"]
         features=pd.concat([features,df_],axis=1)
         features["PSD_mean"]= features["PSD"].apply(lambda row:Utils.compute_mean(row))
